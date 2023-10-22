@@ -7,8 +7,26 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Include="wwwroot\Resources\F1\circuits.csv" />
+    <None Include="wwwroot\Resources\F1\constructors.csv" />
+    <None Include="wwwroot\Resources\F1\constructor_results.csv" />
+    <None Include="wwwroot\Resources\F1\constructor_standings.csv" />
+    <None Include="wwwroot\Resources\F1\drivers.csv" />
+    <None Include="wwwroot\Resources\F1\driver_standings.csv" />
+    <None Include="wwwroot\Resources\F1\lap_times.csv" />
+    <None Include="wwwroot\Resources\F1\pit_stops.csv" />
+    <None Include="wwwroot\Resources\F1\qualifying.csv" />
+    <None Include="wwwroot\Resources\F1\races.csv" />
+    <None Include="wwwroot\Resources\F1\results.csv" />
+    <None Include="wwwroot\Resources\F1\seasons.csv" />
+    <None Include="wwwroot\Resources\F1\sprint_results.csv" />
+    <None Include="wwwroot\Resources\F1\status.csv" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="7.0.5" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="7.0.5" PrivateAssets="all" />
+    <PackageReference Include="MudBlazor" Version="6.11.0" />
   </ItemGroup>
 
 </Project>

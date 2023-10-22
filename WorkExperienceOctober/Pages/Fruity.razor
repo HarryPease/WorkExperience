@@ -1,0 +1,55 @@
+﻿@page "/fruits"
+@inject HttpClient Http
+@inject IDialogService DialogService
+@using Models
+@using Components
+@using System.Text.Json
+@using MudBlazor
+
+<PageTitle>Fruit Viewer</PageTitle>
+
+<h1>Fruit Dictionary</h1>
+
+<MudStack>
+    <MudGrid>
+        @if (fruits == null)
+        {
+            <p><em>Loading...</em></p>
+        }
+        else
+        {
+            @foreach (var fruit in fruits)
+            {
+                <MudItem>
+                    <MudCard>
+                        <MudCardContent>
+                            <MudText>@fruit.name</MudText>
+                            <MudText Typo="Typo.body2">Family : @fruit.family</MudText>
+                            <MudText Typo="Typo.body2">Order  : @fruit.order</MudText>
+                            <MudText Typo="Typo.body2">Genus  : @fruit.genus</MudText>
+                            <MudButton @onclick="@((e) => OpenDialog(fruit))" Variant="Variant.Filled" Color="Color.Primary">
+                                Nutrition Information
+                            </MudButton>
+                        </MudCardContent>
+                    </MudCard>
+                </MudItem>
+            }
+        }
+    </MudGrid>
+</MudStack>
+
+@code {
+    private Fruit[] fruits;
+
+    protected override async Task OnInitializedAsync()
+    {
+        this.fruits = await Http.GetFromJsonAsync<Fruit[]>("Resources/FruityVice/Fruits.json");
+    }
+
+    private void OpenDialog(Fruit fruit)
+    {
+        var parameters = new DialogParameters<Modal> { { x => x.fruit, fruit } };
+        var options = new DialogOptions { CloseOnEscapeKey = true, NoHeader = true };
+        DialogService.ShowAsync<Modal>("Nutrition", parameters, options);
+    }
+}

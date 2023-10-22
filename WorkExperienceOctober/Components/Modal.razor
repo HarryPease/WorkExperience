@@ -1,0 +1,25 @@
+﻿@inject IDialogService DialogService
+@using MudBlazor
+@using Models
+
+<MudDialog>
+    <DialogContent>
+        <MudText>Nutrition Information</MudText>
+        <MudTextField Value="@fruit.nutritions.calories" Label="Calories" ReadOnly="true" />
+        <MudTextField Value="@fruit.nutritions.fat" Label="Fat" ReadOnly="true" />
+        <MudTextField Value="@fruit.nutritions.sugar" Label="Sugar" ReadOnly="true" />
+        <MudTextField Value="@fruit.nutritions.carbohydrates" Label="Carbohydrates" ReadOnly="true" />
+        <MudTextField Value="@fruit.nutritions.protein" Label="Protein" ReadOnly="true" />
+    </DialogContent>
+    <DialogActions>
+        <MudButton OnClick="Close">Close</MudButton>
+    </DialogActions>
+</MudDialog>
+
+@code {
+    [CascadingParameter] MudDialogInstance MudDialog { get; set; }
+
+    [Parameter] public Fruit fruit { get; set; } = new Fruit();
+
+    void Close() => MudDialog.Close();
+}
