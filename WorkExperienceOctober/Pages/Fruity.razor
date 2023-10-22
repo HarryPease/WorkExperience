@@ -27,7 +27,7 @@
                             <MudText Typo="Typo.body2">Family : @fruit.family</MudText>
                             <MudText Typo="Typo.body2">Order  : @fruit.order</MudText>
                             <MudText Typo="Typo.body2">Genus  : @fruit.genus</MudText>
-                            <MudButton @onclick="@((e) => OpenDialog(fruit))" Variant="Variant.Filled" Color="Color.Primary">
+                            <MudButton Size="Size.Small" @onclick="@((e) => OpenDialog(fruit))" Variant="Variant.Filled" Color="Color.Primary">
                                 Nutrition Information
                             </MudButton>
                         </MudCardContent>
@@ -49,7 +49,7 @@
     private void OpenDialog(Fruit fruit)
     {
         var parameters = new DialogParameters<Modal> { { x => x.fruit, fruit } };
-        var options = new DialogOptions { CloseOnEscapeKey = true, NoHeader = true };
+        var options = new DialogOptions { CloseOnEscapeKey = true, NoHeader = true, MaxWidth = MaxWidth.ExtraSmall };
         DialogService.ShowAsync<Modal>("Nutrition", parameters, options);
     }
 }
